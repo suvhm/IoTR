@@ -1,0 +1,15 @@
+id: hello
+_summary: connect hello-world snap
+_description:
+    this iotr test automation will verify hello-world exposer
+category_id: provisioning
+plugin: shell
+requires: 
+   #2018.com.canonical.qa.mybar::snap.name == 'hello-world'
+    com.canonical.certification::snap.name == 'hello-world'
+#flags:
+ #  preserve-cwd
+command:
+    hello-world
+#    pwd
+ #   echo $PATH

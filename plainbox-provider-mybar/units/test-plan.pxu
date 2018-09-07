@@ -1,0 +1,11 @@
+unit: test plan
+id: my-project-custom
+_name: Northstar-Feature-Automation
+_description:
+    This test plan includes all test related to Northstart Release
+include:
+   #ping
+#    web-page
+ #   NIC-Setting
+    hello
+

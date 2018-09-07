@@ -1,0 +1,31 @@
+name: checkbox-mybar
+version: 1
+summary: Checkbox tool for Mybar
+description: Checkbox tool for Mybar
+grade: devel
+confinement: devmode
+
+parts:
+    plainbox-provider-mybar:
+        plugin: plainbox-provider
+        source: ./plainbox-provider-mybar
+        after: [plainbox]
+
+    launchers:
+        plugin: dump
+        source: launchers/
+        organize:
+            '*': bin/
+    plainbox:
+       plugin: nil
+       stage-packages:
+            - plainbox
+            - checkbox-ng
+     #       - checkbox-supports
+
+
+
+apps:
+    mybar-test-runner:
+        command: bin/mybar-test-runner
+        plugs: &standard [home, hello-world] 

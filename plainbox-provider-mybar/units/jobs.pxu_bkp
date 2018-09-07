@@ -1,0 +1,57 @@
+id: ping 
+_summary: Verifed PC connected to IOTR via Ethernet obtains an IPv4/IPv6 address from the IOTR. 
+_description:
+    this iotr test automation will verify weather PC connected to IoTR via Ethernet obtains an IPv4/IPv6 address from the device. 
+plugin: shell
+category_id: provisioning 
+estimated_duration: 1200.90
+command:
+     for i in {2..254}
+     do 
+        echo "Trying to ping IP : 192.168.16.$i"
+        output=$(ping -c 2 192.168.16.$i | tail -1 | awk '{print $2}')
+        if [ "$output" = min/avg/max/mdev ]; then
+          echo "DHCP assigned IP : 192.168.16.$i" 
+          exit 0 
+        fi
+     done
+     exit 1
+
+id: web-page
+_summary: IOTR Configuration
+plugin: manual
+category_id: provisioning
+estimated_duration: 120.0
+_description:
+ PURPOSE:
+     This test will check weather we were successfuly able to bring up the SSN Edge Router Config page. 
+ STEPS:
+     1. Connect your PC to IoTR via Ethernet.
+     1. Open your mrozilla Firefox.
+     2. Make sure that all the proxy are disabled and you have an open port network.
+     3. Login to page via- IP:192.168.16.1
+     4. Wait for almost 1min to load the page
+     5. Now you are able see local SSN Edge Router Config page.
+ VERIFICATION:
+     Did all the steps work?
+
+id: NIC-Setting
+_summary: IOTR SSN NIC Settings
+plugin: manual
+category_id: provisioning
+estimated_duration: 20.0
+_description:
+ PURPOSE:
+     This test will verify IOTR SSN NIC settings via web page and net_mgr (country code, network id, start word, SSN firmware version, MAC address)
+ STEPS:
+     1. Connect your PC to IoTR via Ethernet.
+     1. Open your mrozila Firefox.
+     2. Make sure that all the proxy are disabled and you have an open port network.
+     3. Login to page via- IP:192.168.16.1
+     4. Wait for almost 1min to load the page
+     5. Now you are able see local SSN Edge Router Config page.
+     6. You can See Device Manager which is on the left side of the page.
+     7. Select IoTR and go to Provisioning.
+     8. Here you can see NIC Start Word, NIC FW version, NIC Device Type and you can Set Network Id and Country Code as well. 
+ VERIFICATION:
+     Did all the steps work?

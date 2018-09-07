@@ -1,0 +1,8 @@
+#!/usr/bin/env checkbox-cli-wrapper
+[launcher]
+app_id = 2018.com.canonical.qa.mybar:checkbox
+launcher_version = 1
+stock_reports = text, submission_files
+
+[test plan]
+filter = *mybar*, *tpm-smoke-tests
